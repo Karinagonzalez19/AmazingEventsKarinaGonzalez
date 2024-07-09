@@ -1,0 +1,18 @@
+header, footer{
+    min-height: 6vh;
+    
+}
+main{
+    min-height: 88vh;
+}
+.banner{
+height: 25vh;
+}
+
+.img-card{
+ height: 25vh;   
+}
+
+.cards-heigth{
+height:60vh ;
+}
