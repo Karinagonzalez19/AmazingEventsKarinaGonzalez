@@ -1,10 +1,10 @@
-header, footer{
-    min-height: 6vh;
+header{
+    min-height: 4vh;
     
 }
 main{
-    min-height: 88vh;
-}
+    min-height: 92vh;
+    }
 .banner{
 height: 25vh;
 }
@@ -15,4 +15,12 @@ height: 25vh;
 
 .cards-heigth{
 height:60vh ;
+}
+footer{
+    min-height: 4vh;
+}
+
+.logo{
+    height: 30px;
+   
 }
