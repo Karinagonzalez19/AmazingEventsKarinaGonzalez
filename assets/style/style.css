@@ -4,17 +4,17 @@ header{
 }
 main{
     min-height: 92vh;
-    }
+}
 .banner{
 height: 25vh;
 }
 
 .img-card{
- height: 25vh;   
+height: 25vh;   
 }
 
 .cards-heigth{
-height:60vh ;
+height:400px ;
 }
 footer{
     min-height: 4vh;
