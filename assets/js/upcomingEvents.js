@@ -194,26 +194,75 @@ const data = {
       },
     ],
   };
-
-const arrayDatos = data.events
-
-let father = document.getElementById("cardsFather") 
-let fechaActual =  new Date(data.currentDate)
-
-for (let i = 0; i < arrayDatos.length; i++) {
-  let fechaItems = new Date(arrayDatos[i].date)
-  if( fechaItems > fechaActual){
-    father.innerHTML += `
-          <div class="card cards-heigth">
-                    <img src= ${arrayDatos[i].image} class="card-img-top img-card object-fit-cover" alt="...">
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <h5 class="card-title">${arrayDatos[i].name}</h5>
-                        <p class="card-text">${arrayDatos[i].description}</p>
-                        <div class="d-flex flex-row justify-content-between">
-                        <p>Price: ${arrayDatos[i].price}</p>
-                        <a href="./details.html" class="btn btn-primary">Details</a>
-                    </div>
-                </div>
-            </div> `
+  
+  let cardsFather = document.getElementById("cards");
+  let categoriesContainer = document.getElementById("categories"); 
+  
+  function generateCategoryFilters() {
+    const categories = [...new Set(data.events.map(event => event.category))];
+    categoriesContainer.innerHTML = '';
+    
+    categories.forEach(category => {
+        const checkbox = document.createElement('div');
+        checkbox.className = 'form-check m-2';
+        checkbox.innerHTML = `
+            <input class="form-check-input" type="checkbox" value="${category}" id="${category}">
+            <label class="form-check-label" for="${category}">${category}</label>
+        `;
+        categoriesContainer.appendChild(checkbox);
+    });
   }
-}
+  
+  function applyEventFilters() {
+    const searchTerm = document.querySelector('input[type="search"]').value.toLowerCase();
+    const selectedCategories = Array.from(document.querySelectorAll('.form-check-input:checked')).map(checkbox => checkbox.value);
+    
+    const filteredEvents = data.events.filter(event => {
+        const matchesSearch = event.name.toLowerCase().includes(searchTerm) || event.description.toLowerCase().includes(searchTerm);
+        const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(event.category);
+        return matchesSearch && matchesCategory;
+    });
+    
+    eventCards(filteredEvents);
+  }
+  
+  function eventCards(events) {
+    cardsFather.innerHTML = ''; 
+  
+    if (events.length === 0) {
+        cardsFather.innerHTML = '<p class="text-center min-h">No se encontraron eventos que coincidan con tu búsqueda.</p>';
+        return;
+    }
+    
+    const row = document.createElement('div');
+    row.className = 'row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center';
+    
+    events.forEach(event => {
+      const eventDate = event.date;
+      if (eventDate >= data.currentDate) {
+        const card = document.createElement("div");
+        card.className = "card cards-heigth";
+        card.innerHTML = `    
+          <img src="${event.image}" class="card-img-top" alt="${event.name}">
+          <div class="card-body d-flex flex-column justify-content-between text-primary-emphasis border border-primary-subtle">
+            <h3 class="text">${event.name}</h3>
+            <p class="card-text">${event.description}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-title fs-5">Price: ${event.price}$</p>
+                <a href="details.html?id=${event._id}" class="btn btn-outline-primary btn-primary-emphasis">Details</a>
+            </div>
+          </div>
+        `;
+        cardsFather.appendChild(card);
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    generateCategoryFilters();
+    eventCards(data.events);
+    
+    document.querySelector('input[type="search"]').addEventListener('input', applyEventFilters);
+    categoriesContainer.addEventListener('change', applyEventFilters); 
+  });
+  
