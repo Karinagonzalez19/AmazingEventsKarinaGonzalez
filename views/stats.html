@@ -110,63 +110,43 @@
 
         <div class="d-flex align-items-center justify-content-center mt-5">
             <div class="col-10">
-            <table class="table table-bordered border border-warning-subtle">
-                <thead>
-                    <tr class="table-secondary">
-                        <th colspan="3">Events Statistics</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Events with highest % of assistance</td>
-                        <td>Events with lowest % of assistance</td>
-                        <td>Events with largest capacity</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th colspan="3">Upcoming events statistics by category</th>
-                    </tr>
-                    <tr>
-                        <td>Categories</td>
-                        <td>Revenues</td>
-                        <td>Percentage of assistance</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th colspan="3">Past events statistics by category</th>
-                    </tr>
-                    <tr>
-                        <td>Categories</td>
-                        <td>Revenues</td>
-                        <td>Percentage of assistance</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        </div>
+                <table class="table table-bordered border border-warning-subtle">
+                    <thead>
+                        <tr class="table-secondary">
+                            <th class= "text-center" colspan="3">Events Statistics</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaPorcentajes">
+                        <tr>
+                            <td class= "text-center bg-warning">Events with highest % of assistance</td>
+                            <td class= "text-center bg-warning">Events with lowest % of assistance</td>
+                            <td class= "text-center bg-warning">Events with largest capacity</td>
+                        </tr>
+                    </tbody>
+                    
+                    <tbody id="tablaProximos">
+                        <tr class="table-secondary">
+                            <th class= "text-center" colspan="3">Upcoming events statistics by category</th>
+                        </tr>
+                        <tr>
+                            <td class= "text-center bg-warning">Categories</td>
+                            <td class= "text-center bg-warning">Revenues</td>
+                            <td class= "text-center bg-warning">Percentage of assistance</td>
+                        </tr>
+                    </tbody>
+                    <tbody id="tablaPasados">
+                        <tr class="table-secondary">
+                            <th class= "text-center" colspan="3">Past events statistics by category</th>
+                        </tr>
+                        <tr>
+                            <td class= "text-center bg-warning">Categories</td>
+                            <td class= "text-center bg-warning">Revenues</td>
+                            <td class= "text-center bg-warning">Percentage of assistance</td>
+                        </tr>
+                        
+                    </tbody>
+
+                </table>
     </main>
 
     <footer class="d-flex justify-content-between bg-secondary align-items-center mt-3">
@@ -190,6 +170,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+        <script src="../assets/js/stats.js"></script>
 </body>
 
 </html>
